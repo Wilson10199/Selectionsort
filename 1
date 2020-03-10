@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void swap(int *ab, int *cd)
+{
+    int temp = *ab;
+    *ab = *cd;
+    *cd = temp;
+}
+
+void selectionSort(int arr[], int n)
+{
+    int e, r, min_idx;
+
+    for (e = 0; e < n-1; e++)
+    {
+        min_idx = e;
+        for (r = e+1; r < n; r++)
+        if (arr[r] < arr[min_idx])
+            min_idx = r;
+
+        swap(&arr[min_idx], &arr[e]);
+    }
+}
+
+void printArray(int arr[], int size)
+{
+    int e;
+    for (e=0; e < size; e++)
+        cout << arr[e] << " ";
+    cout << endl;
+}
+
+int main()
+{
+    int arr[] = {44, 56, 23, 1, 12, 7, 9, 10};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    selectionSort(arr, n);
+    cout << "Sorted array becomes: \n";
+    printArray(arr, n);
+    return 0;
+}
